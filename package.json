@@ -6,7 +6,10 @@
   "scripts": {
     "lint": "eslint src/**/*.js",
     "start": "node ./src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "build": "npm run build-docs",
+    "build-docs": "redocly bundle src/docs/openapi.yaml --ext json -o src/docs/swagger.json",
+    "preview-docs": "redocly preview-docs"
   },
   "keywords": [],
   "author": "Oleksii Ozyrskyi <aozyrskyii@gmail.com>",
@@ -14,6 +17,7 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.10.0",
+    "@redocly/cli": "^1.25.2",
     "eslint": "^9.10.0",
     "globals": "^15.9.0",
     "nodemon": "^3.1.4",
@@ -26,6 +30,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.20.0",
+    "google-auth-library": "^9.14.1",
     "handlebars": "^4.7.8",
     "helmet": "^7.1.0",
     "http-errors": "^2.0.0",
