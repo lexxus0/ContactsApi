@@ -79,7 +79,7 @@ paths:
               properties:
                 email:
                   type: string
-                  example: johndoe@example.com
+                  example: oleksii@example.com
       responses:
         '200':
           description: Reset email sent successfully
@@ -113,7 +113,7 @@ paths:
                   description: JWT token from reset email
                 password:
                   type: string
-                  example: newstrongpassword123
+                  example: newpasswordpassword
       responses:
         '200':
           description: Password reset successfully
@@ -183,13 +183,13 @@ paths:
               properties:
                 name:
                   type: string
-                  example: John Doe
+                  example: Oleksii
                 phoneNumber:
                   type: string
                   example: 123113355
                 email:
                   type: string
-                  example: johndoe@example.com
+                  example: oleksii@example.com
                 isFavourite:
                   type: boolean
                   example: true
@@ -317,13 +317,13 @@ components:
       properties:
         name:
           type: string
-          example: John Doe
+          example: Oleksii
         email:
           type: string
-          example: johndoe@example.com
+          example: oleksii@example.com
         password:
           type: string
-          example: strongpassword123
+          example: passwordpassword
 
     UserLogin:
       type: object
@@ -333,23 +333,23 @@ components:
       properties:
         email:
           type: string
-          example: johndoe@example.com
+          example: oleksii@example.com
         password:
           type: string
-          example: strongpassword123
+          example: passwordpassword
 
     Contact:
       type: object
       properties:
         name:
           type: string
-          example: 'John Doe'
+          example: 'Oleksii'
         phoneNumber:
           type: number
           example: 123113355
         email:
           type: string
-          example: johndoe@example.com
+          example: oleksii@example.com
         isFavourite:
           type: boolean
           example: true
