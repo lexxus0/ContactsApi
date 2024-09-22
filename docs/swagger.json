@@ -27,9 +27,7 @@
   "paths": {
     "/auth/register": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "operationId": "registerUser",
         "summary": "Register a new user",
         "security": [
@@ -42,26 +40,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "required": [
-                  "name",
-                  "email",
-                  "password"
-                ],
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "John Doe"
-                  },
-                  "email": {
-                    "type": "string",
-                    "example": "johndoe@example.com"
-                  },
-                  "password": {
-                    "type": "string",
-                    "example": "strongpassword123"
-                  }
-                }
+                "$ref": "#/components/schemas/UserRegistration"
               }
             }
           }
@@ -81,9 +60,7 @@
     },
     "/auth/login": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "operationId": "loginUser",
         "summary": "Login user",
         "security": [
@@ -96,21 +73,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "required": [
-                  "email",
-                  "password"
-                ],
-                "properties": {
-                  "email": {
-                    "type": "string",
-                    "example": "johndoe@example.com"
-                  },
-                  "password": {
-                    "type": "string",
-                    "example": "strongpassword123"
-                  }
-                }
+                "$ref": "#/components/schemas/UserLogin"
               }
             }
           }
@@ -133,9 +96,7 @@
     },
     "/auth/send-reset-email": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "operationId": "sendResetEmail",
         "summary": "Send password reset email",
         "security": [
@@ -149,13 +110,11 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "email"
-                ],
+                "required": ["email"],
                 "properties": {
                   "email": {
                     "type": "string",
-                    "example": "johndoe@example.com"
+                    "example": "oleksii@example.com"
                   }
                 }
               }
@@ -180,9 +139,7 @@
     },
     "/auth/reset-pwd": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "operationId": "resetPassword",
         "summary": "Reset user password",
         "security": [
@@ -196,10 +153,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "token",
-                  "password"
-                ],
+                "required": ["token", "password"],
                 "properties": {
                   "token": {
                     "type": "string",
@@ -207,7 +161,7 @@
                   },
                   "password": {
                     "type": "string",
-                    "example": "newstrongpassword123"
+                    "example": "newpasswordpassword"
                   }
                 }
               }
@@ -235,9 +189,7 @@
     },
     "/auth/logout": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "operationId": "logoutUser",
         "summary": "Logout user",
         "security": [
@@ -260,9 +212,7 @@
     },
     "/contacts": {
       "get": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "operationId": "getContacts",
         "summary": "Get all contacts",
         "security": [
@@ -290,9 +240,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "operationId": "createContact",
         "summary": "Create a new contact",
         "security": [
@@ -315,7 +263,7 @@
                 "properties": {
                   "name": {
                     "type": "string",
-                    "example": "John Doe"
+                    "example": "Oleksii"
                   },
                   "phoneNumber": {
                     "type": "string",
@@ -323,7 +271,7 @@
                   },
                   "email": {
                     "type": "string",
-                    "example": "johndoe@example.com"
+                    "example": "oleksii@example.com"
                   },
                   "isFavourite": {
                     "type": "boolean",
@@ -331,11 +279,7 @@
                   },
                   "contactType": {
                     "type": "string",
-                    "enum": [
-                      "work",
-                      "home",
-                      "personal"
-                    ],
+                    "enum": ["work", "home", "personal"],
                     "example": "personal"
                   },
                   "photo": {
@@ -365,9 +309,7 @@
     },
     "/contacts/{id}": {
       "get": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "operationId": "getContactById",
         "summary": "Get contact by ID",
         "security": [
@@ -401,9 +343,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "operationId": "updateContact",
         "summary": "Update contact",
         "security": [
@@ -441,11 +381,7 @@
                   },
                   "contactType": {
                     "type": "string",
-                    "enum": [
-                      "work",
-                      "home",
-                      "personal"
-                    ]
+                    "enum": ["work", "home", "personal"]
                   },
                   "photo": {
                     "type": "string",
@@ -475,9 +411,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Contacts"
-        ],
+        "tags": ["Contacts"],
         "operationId": "deleteContact",
         "summary": "Delete contact by ID",
         "security": [
@@ -520,6 +454,38 @@
       }
     },
     "schemas": {
+      "UserRegistration": {
+        "type": "object",
+        "required": ["name", "email", "password"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Oleksii"
+          },
+          "email": {
+            "type": "string",
+            "example": "oleksii@example.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "passwordpassword"
+          }
+        }
+      },
+      "UserLogin": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "oleksii@example.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "passwordpassword"
+          }
+        }
+      },
       "ContactsList": {
         "type": "object",
         "properties": {
@@ -536,7 +502,7 @@
         "properties": {
           "name": {
             "type": "string",
-            "example": "John Doe"
+            "example": "Oleksii"
           },
           "phoneNumber": {
             "type": "number",
@@ -544,7 +510,7 @@
           },
           "email": {
             "type": "string",
-            "example": "johndoe@example.com"
+            "example": "oleksii@example.com"
           },
           "isFavourite": {
             "type": "boolean",

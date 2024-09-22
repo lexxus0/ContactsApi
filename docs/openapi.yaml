@@ -27,21 +27,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - name
-                - email
-                - password
-              properties:
-                name:
-                  type: string
-                  example: John Doe
-                email:
-                  type: string
-                  example: johndoe@example.com
-                password:
-                  type: string
-                  example: strongpassword123
+              $ref: '#/components/schemas/UserRegistration'
       responses:
         '201':
           description: User registered successfully
@@ -63,17 +49,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required:
-                - email
-                - password
-              properties:
-                email:
-                  type: string
-                  example: johndoe@example.com
-                password:
-                  type: string
-                  example: strongpassword123
+              $ref: '#/components/schemas/UserLogin'
       responses:
         '200':
           description: User logged in successfully
@@ -180,7 +156,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ContactsList'
+                $ref: '#/components/schemas/Contact'
         '401':
           description: Unauthorized
         '500':
@@ -332,13 +308,36 @@ components:
       type: http
       scheme: bearer
   schemas:
-    ContactsList:
+    UserRegistration:
       type: object
+      required:
+        - name
+        - email
+        - password
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          example: johndoe@example.com
+        password:
+          type: string
+          example: strongpassword123
+
+    UserLogin:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: johndoe@example.com
+        password:
+          type: string
+          example: strongpassword123
+
     Contact:
       type: object
       properties:
