@@ -26,6 +26,15 @@ const contactsSchema = new Schema(
   },
   {
     timestamps: true,
+
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+    },
+    toObject: {
+      virtuals: true,
+      versionKey: false,
+    },
   },
 );
 
