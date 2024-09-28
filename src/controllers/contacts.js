@@ -32,7 +32,7 @@ export const getContactByIdController = async (req, res, next) => {
 };
 
 export const createContactController = async (req, res, next) => {
-  const contact = await createContact(req.body).lean(); // w/o _v
+  const contact = await createContact(req.body);
 
   res.status(201).json({
     status: 201,
