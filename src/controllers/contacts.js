@@ -70,7 +70,7 @@ export const createContactController = async (req, res, next) => {
     photo: photoUrl,
   };
 
-  const contact = await createContact(contactData).lean();
+  const contact = await createContact(contactData);
 
   res.status(201).json({
     status: 201,
