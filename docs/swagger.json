@@ -572,7 +572,13 @@
                     "_id": "670bfe7b51f30909a5174d36",
                     "createdAt": "2024-10-13T17:08:11.785Z",
                     "updatedAt": "2024-10-13T17:08:11.785Z",
-                    "id": "670bfe7b51f30909a5174d36"
+                    "id": "670bfe7b51f30909a5174d36",
+                    "page": 1,
+                    "perPage": 10,
+                    "totalItems": 0,
+                    "totalPages": 0,
+                    "hasNextPage": true,
+                    "hasPreviousPage": false
                   }
                 }
               }
