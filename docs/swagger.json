@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api/v1"
+      "url": "https://nodejs-hw-mongodb-3-06yw.onrender.com/api/v1"
     }
   ],
   "tags": [
@@ -83,13 +83,13 @@
             "description": "User logged in successfully"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Login failed"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Missing header with authorization token."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server Error"
           }
         }
       }
@@ -173,16 +173,16 @@
             "description": "Password reset successfully"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Password reseting failed"
           },
           "401": {
-            "description": "Token is expired or invalid"
+            "description": "Missing header with authorization token."
           },
           "404": {
             "description": "User not found"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server Error"
           }
         }
       }
@@ -202,10 +202,10 @@
             "description": "User logged out successfully"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Missing header with authorization token."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server Error"
           }
         }
       }
@@ -232,10 +232,10 @@
             }
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Missing header with authorization token."
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server error."
           }
         }
       },
@@ -253,13 +253,7 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "name",
-                  "phoneNumber",
-                  "email",
-                  "isFavourite",
-                  "contactType"
-                ],
+                "required": ["name", "phoneNumber"],
                 "properties": {
                   "name": {
                     "type": "string",
@@ -296,13 +290,13 @@
             "description": "Contact created successfully"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Contact create failed"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Missing header with authorization token"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server error"
           }
         }
       }
@@ -332,13 +326,13 @@
             "description": "Contact retrieved successfully"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Missing header with authorization token."
           },
           "404": {
             "description": "Contact not found"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server Error"
           }
         }
       },
@@ -397,16 +391,16 @@
             "description": "Contact updated successfully"
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Contact update failed"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Missing header with authorization token."
           },
           "404": {
             "description": "Contact not found"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server Error"
           }
         }
       },
@@ -434,13 +428,13 @@
             "description": "Contact deleted successfully"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Missing header with authorization token."
           },
           "404": {
             "description": "Contact not found"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Server Error"
           }
         }
       }
