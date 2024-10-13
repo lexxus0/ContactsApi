@@ -33,6 +33,8 @@ paths:
           description: User registered successfully
         '400':
           description: User creation error
+        '409':
+          description: Email in use
         '500':
           description: Server Error
 

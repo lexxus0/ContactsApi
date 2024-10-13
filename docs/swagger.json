@@ -47,10 +47,28 @@
         },
         "responses": {
           "201": {
-            "description": "User registered successfully"
+            "description": "User registered successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 201,
+                  "message": "Successfully registered a user!",
+                  "data": {
+                    "name": "Oleksii",
+                    "email": "oleksii@example.com",
+                    "_id": "670bb07661d02f82f21ab999",
+                    "createdAt": "024-10-13T11:35:18.404Z",
+                    "updatedAt": "024-10-13T11:35:18.404Z"
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
+          },
+          "409": {
+            "description": "Email in use"
           },
           "500": {
             "description": "Internal Server Error"
@@ -80,13 +98,59 @@
         },
         "responses": {
           "200": {
-            "description": "User logged in successfully"
+            "description": "User logged in successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 200,
+                  "message": "Successfully logged in an user!",
+                  "data": {
+                    "accessToken": "sD5E+jdfyhoaySJe2ikJA0iuhN0eO8OnTGSM7RHh"
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "Login failed"
+            "description": "Login failed",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 400,
+                  "message": "BadRequestError",
+                  "data": {
+                    "message": "Bad Request",
+                    "errors": [
+                      {
+                        "message": "\"password\" length must be at least 8 characters long",
+                        "path": ["password"],
+                        "type": "string.min",
+                        "context": {
+                          "limit": 8,
+                          "value": "145678",
+                          "label": "password",
+                          "key": "password"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Missing header with authorization token.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 401,
+                  "message": "UnauthorizedError",
+                  "data": {
+                    "message": "Session not found"
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "Server Error"
@@ -176,7 +240,18 @@
             "description": "Password reseting failed"
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Missing header with authorization token.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 401,
+                  "message": "UnauthorizedError",
+                  "data": {
+                    "message": "Session not found"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "User not found"
@@ -202,7 +277,18 @@
             "description": "User logged out successfully"
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Missing header with authorization token.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 401,
+                  "message": "UnauthorizedError",
+                  "data": {
+                    "message": "Session not found"
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "Server Error"
@@ -218,6 +304,69 @@
         "security": [
           {
             "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "description": "Number of items per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 10
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Field to sort by",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "name"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order (asc or desc)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["asc", "desc"],
+              "example": "asc"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter contacts by name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Oleksii"
+            }
+          },
+          {
+            "name": "isFavourite",
+            "in": "query",
+            "description": "Filter contacts by favourite status",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "example": true
+            }
           }
         ],
         "responses": {
@@ -293,7 +442,18 @@
             "description": "Contact create failed"
           },
           "401": {
-            "description": "Missing header with authorization token"
+            "description": "Missing header with authorization token",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 401,
+                  "message": "UnauthorizedError",
+                  "data": {
+                    "message": "Session not found"
+                  }
+                }
+              }
+            }
           },
           "500": {
             "description": "Server error"
@@ -326,7 +486,18 @@
             "description": "Contact retrieved successfully"
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Missing header with authorization token.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 401,
+                  "message": "UnauthorizedError",
+                  "data": {
+                    "message": "Session not found"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "Contact not found"
@@ -394,7 +565,18 @@
             "description": "Contact update failed"
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Missing header with authorization token.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 401,
+                  "message": "UnauthorizedError",
+                  "data": {
+                    "message": "Session not found"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "Contact not found"
@@ -428,7 +610,18 @@
             "description": "Contact deleted successfully"
           },
           "401": {
-            "description": "Missing header with authorization token."
+            "description": "Missing header with authorization token.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "status": 401,
+                  "message": "UnauthorizedError",
+                  "data": {
+                    "message": "Session not found"
+                  }
+                }
+              }
+            }
           },
           "404": {
             "description": "Contact not found"
